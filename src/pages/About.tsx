@@ -1,5 +1,14 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
+import { 
+  Gem, 
+  Eye, 
+  ArrowRight, 
+  Landmark, 
+  Globe, 
+  Shield, 
+  ScrollText 
+} from 'lucide-react';
 import image1 from '../images/image1.png';
 
 export default function About() {
@@ -76,7 +85,7 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8">
           <div className="lg:col-span-7 bg-primary text-white p-8 md:p-12 rounded-[2.5rem] flex flex-col justify-between shadow-lg">
             <div className="space-y-6">
-              <span className="material-symbols-outlined text-3xl md:text-4xl text-primary-fixed">diamond</span>
+              <Gem size={40} className="text-[#C5A059]" />
               <h3 className="text-3xl md:text-4xl font-bold">Our Mission</h3>
               <p className="text-base md:text-lg opacity-80 leading-relaxed">To democratize sophisticated institutional-grade investment strategies for private investors, ensuring that every portfolio we touch is optimized for long-term compounding and absolute security.</p>
             </div>
@@ -87,14 +96,14 @@ export default function About() {
           </div>
           <div className="lg:col-span-5 bg-surface-container-highest p-8 md:p-12 rounded-[2.5rem] flex flex-col justify-between">
             <div className="space-y-6">
-              <span className="material-symbols-outlined text-3xl md:text-4xl text-primary">visibility</span>
+              <Eye size={40} className="text-primary" />
               <h3 className="text-2xl md:text-3xl font-bold text-primary">Our Vision</h3>
               <p className="text-on-surface-variant leading-relaxed text-sm md:text-base">To be the global benchmark for bespoke financial advisory, where technology meets human intuition to create the ultimate wealth preservation ecosystem.</p>
             </div>
             <div className="mt-8">
               <Link className="flex items-center gap-2 text-primary font-bold group text-sm md:text-base" to="/services">
                 Explore our services
-                <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
           </div>
@@ -132,10 +141,10 @@ export default function About() {
           </div>
           
           {[
-            { title: "Strategic Advisory", desc: "Institutional-grade strategies tailored for individual growth targets.", icon: "account_balance" },
-            { title: "Global Insights", desc: "Real-time analysis of international markets to identify alpha opportunities.", icon: "language" },
-            { title: "Risk Mitigation", desc: "Sophisticated hedging techniques to preserve capital in volatile markets.", icon: "security" },
-            { title: "Legacy Planning", desc: "Structured blueprints for multi-generational wealth preservation.", icon: "history_edu" }
+            { title: "Strategic Advisory", desc: "Institutional-grade strategies tailored for individual growth targets.", icon: Landmark },
+            { title: "Global Insights", desc: "Real-time analysis of international markets to identify alpha opportunities.", icon: Globe },
+            { title: "Risk Mitigation", desc: "Sophisticated hedging techniques to preserve capital in volatile markets.", icon: Shield },
+            { title: "Legacy Planning", desc: "Structured blueprints for multi-generational wealth preservation.", icon: ScrollText }
           ].map((item, i) => (
             <motion.div 
               key={i} 
@@ -144,7 +153,7 @@ export default function About() {
               className="bg-surface-container-low p-8 rounded-[2rem] border border-outline-variant/10 hover:shadow-2xl hover:bg-white transition-all duration-500 group"
             >
               <div className="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-500">
-                <span className="material-symbols-outlined text-3xl">{item.icon}</span>
+                <item.icon size={28} />
               </div>
               <h4 className="text-xl font-bold text-primary mb-3">{item.title}</h4>
               <p className="text-sm text-on-surface-variant leading-relaxed opacity-80">{item.desc}</p>

@@ -86,21 +86,33 @@
   100% { transform: translateX(-50%); }
 }
 
-.animate-marquee {
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-marquee, 
+.animate-marquee-slow, 
+.animate-marquee-fast, 
+.animate-marquee-reverse, 
+.animate-marquee-reverse-slow {
   display: flex;
   width: fit-content;
-  animation: marquee 30s linear infinite;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }
 
-.animate-marquee-slow {
-  animation-duration: 45s;
-}
+.animate-marquee { animation-name: marquee; animation-duration: 30s; }
+.animate-marquee-slow { animation-name: marquee; animation-duration: 60s; }
+.animate-marquee-fast { animation-name: marquee; animation-duration: 20s; }
+.animate-marquee-reverse { animation-name: marquee-reverse; animation-duration: 30s; }
+.animate-marquee-reverse-slow { animation-name: marquee-reverse; animation-duration: 60s; }
 
-.animate-marquee-fast {
-  animation-duration: 25s;
-}
-
-.animate-marquee:hover {
+.animate-marquee:hover,
+.animate-marquee-slow:hover,
+.animate-marquee-fast:hover,
+.animate-marquee-reverse:hover,
+.animate-marquee-reverse-slow:hover {
   animation-play-state: paused;
 }
 

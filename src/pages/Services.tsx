@@ -1,4 +1,18 @@
 import { Link } from 'react-router-dom';
+import { 
+  Wallet, 
+  Users, 
+  ArrowRight, 
+  Landmark, 
+  TrendingUp, 
+  BarChart2, 
+  ChevronRight, 
+  Grid3X3, 
+  PieChart, 
+  Rocket, 
+  FileText, 
+  CircleDollarSign 
+} from 'lucide-react';
 
 export default function Services() {
   return (
@@ -16,8 +30,8 @@ export default function Services() {
             </p>
           </div>
           <div className="hidden lg:block">
-            <div className="w-24 h-24 rounded-full border-2 border-primary-container/20 flex items-center justify-center animate-pulse">
-              <span className="material-symbols-outlined text-primary text-4xl">account_balance_wallet</span>
+            <div className="w-24 h-24 rounded-full border-2 border-primary/20 flex items-center justify-center animate-pulse">
+              <Wallet className="text-primary" size={40} />
             </div>
           </div>
         </div>
@@ -27,100 +41,100 @@ export default function Services() {
       <section className="max-w-7xl mx-auto px-6 md:px-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
           {/* Financial Services */}
-          <div className="md:col-span-12 lg:col-span-8 group relative overflow-hidden bg-surface-container-lowest rounded-3xl ghost-border p-8 md:p-10 hover:shadow-xl transition-all duration-500">
+          <div className="md:col-span-12 lg:col-span-8 group relative overflow-hidden bg-white rounded-3xl border border-slate-100 p-8 md:p-10 hover:shadow-xl transition-all duration-500">
             <div className="relative z-10 flex flex-col h-full justify-between">
               <div>
-                <span className="material-symbols-outlined text-3xl md:text-4xl text-primary mb-6">diversity_3</span>
+                <Users size={40} className="text-primary mb-6" />
                 <h3 className="text-2xl md:text-3xl font-bold text-primary mb-4">Financial Services</h3>
-                <p className="text-on-surface-variant text-base md:text-lg leading-relaxed max-w-md">Comprehensive advisory and management strategies tailored to secure your legacy and maximize future growth.</p>
+                <p className="text-slate-500 text-base md:text-lg leading-relaxed max-w-md">Comprehensive advisory and management strategies tailored to secure your legacy and maximize future growth.</p>
               </div>
               <div className="mt-8 md:mt-12">
                 <Link className="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" to="/contact">
-                  Learn More <span className="material-symbols-outlined">arrow_forward</span>
+                  Learn More <ArrowRight size={20} />
                 </Link>
               </div>
             </div>
             <div className="absolute -right-10 -bottom-10 opacity-5 group-hover:opacity-10 transition-opacity duration-500 hidden sm:block">
-              <span className="material-symbols-outlined text-[200px]">assured_workload</span>
+              <Landmark size={200} />
             </div>
           </div>
 
           {/* Equity */}
-          <div className="md:col-span-6 lg:col-span-4 group bg-primary-container rounded-3xl p-8 md:p-10 flex flex-col justify-between hover:scale-[1.02] transition-transform duration-300">
+          <div className="md:col-span-6 lg:col-span-4 group bg-[#001f66] rounded-3xl p-8 md:p-10 flex flex-col justify-between hover:scale-[1.02] transition-transform duration-300">
             <div>
-              <span className="material-symbols-outlined text-primary-fixed text-3xl md:text-4xl mb-6">trending_up</span>
+              <TrendingUp size={40} className="text-[#C5A059] mb-6" />
               <h3 className="text-xl md:text-2xl font-bold text-white mb-3">Equity</h3>
-              <p className="text-primary-fixed-dim/80 text-sm leading-relaxed">Direct access to primary exchanges with institutional-grade research and execution speed.</p>
+              <p className="text-blue-100/70 text-sm leading-relaxed">Direct access to primary exchanges with institutional-grade research and execution speed.</p>
             </div>
             <Link className="mt-8 py-3 bg-white/10 backdrop-blur-md rounded-xl text-center text-white font-semibold hover:bg-white/20 transition-colors" to="/equity">Learn More</Link>
           </div>
 
           {/* Derivatives */}
-          <div className="md:col-span-6 lg:col-span-4 group bg-surface-container-low rounded-3xl p-8 md:p-10 flex flex-col justify-between hover:bg-surface-container-high transition-colors">
+          <div className="md:col-span-6 lg:col-span-4 group bg-slate-50 rounded-3xl p-8 md:p-10 flex flex-col justify-between hover:bg-slate-100 transition-colors">
             <div>
               <div className="flex justify-between items-start mb-6">
-                <span className="material-symbols-outlined text-primary text-3xl md:text-4xl">analytics</span>
-                <div className="bg-tertiary-fixed px-3 py-1 rounded-full text-[10px] font-bold text-on-tertiary-fixed-variant tracking-tighter uppercase">High Precision</div>
+                <BarChart2 size={40} className="text-primary" />
+                <div className="bg-amber-100 px-3 py-1 rounded-full text-[10px] font-bold text-amber-700 tracking-tighter uppercase">High Precision</div>
               </div>
               <h3 className="text-xl md:text-2xl font-bold text-primary mb-3">Derivative</h3>
-              <p className="text-on-surface-variant text-sm leading-relaxed">Sophisticated hedging and speculation instruments including Futures and Options.</p>
+              <p className="text-slate-500 text-sm leading-relaxed">Sophisticated hedging and speculation instruments including Futures and Options.</p>
             </div>
             <Link className="mt-8 text-primary font-bold text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all" to="/derivatives">
-              Learn More <span className="material-symbols-outlined text-sm">chevron_right</span>
+              Learn More <ChevronRight size={16} />
             </Link>
           </div>
 
           {/* Commodity */}
-          <div className="md:col-span-6 lg:col-span-4 group bg-surface-container-lowest ghost-border rounded-3xl p-8 md:p-10 flex flex-col justify-between hover:shadow-lg transition-all">
+          <div className="md:col-span-6 lg:col-span-4 group bg-white border border-slate-100 rounded-3xl p-8 md:p-10 flex flex-col justify-between hover:shadow-lg transition-all">
             <div>
-              <span className="material-symbols-outlined text-primary text-3xl md:text-4xl mb-6">grid_goldenratio</span>
+              <Grid3X3 size={40} className="text-primary mb-6" />
               <h3 className="text-xl md:text-2xl font-bold text-primary mb-3">Commodity</h3>
-              <p className="text-on-surface-variant text-sm leading-relaxed">Diversify your portfolio with gold, silver, and energy assets through secure trading desks.</p>
+              <p className="text-slate-500 text-sm leading-relaxed">Diversify your portfolio with gold, silver, and energy assets through secure trading desks.</p>
             </div>
             <Link className="mt-8 text-primary font-bold text-sm inline-flex items-center gap-1" to="/commodity">
-              Learn More <span className="material-symbols-outlined text-sm">chevron_right</span>
+              Learn More <ChevronRight size={16} />
             </Link>
           </div>
 
           {/* Mutual Funds */}
-          <div className="md:col-span-6 lg:col-span-4 group bg-surface-container-low rounded-3xl p-8 md:p-10 flex flex-col justify-between overflow-hidden relative">
+          <div className="md:col-span-6 lg:col-span-4 group bg-slate-50 rounded-3xl p-8 md:p-10 flex flex-col justify-between overflow-hidden relative">
             <div className="relative z-10">
-              <span className="material-symbols-outlined text-primary text-3xl md:text-4xl mb-6">pie_chart</span>
+              <PieChart size={40} className="text-primary mb-6" />
               <h3 className="text-xl md:text-2xl font-bold text-primary mb-3">Mutual Funds</h3>
-              <p className="text-on-surface-variant text-sm leading-relaxed">Professional asset management with a wide spectrum of debt, equity, and hybrid funds.</p>
+              <p className="text-slate-500 text-sm leading-relaxed">Professional asset management with a wide spectrum of debt, equity, and hybrid funds.</p>
             </div>
             <Link className="relative z-10 mt-8 text-primary font-bold text-sm inline-flex items-center gap-1" to="/mutual-funds">
-              Learn More <span className="material-symbols-outlined text-sm">chevron_right</span>
+              Learn More <ChevronRight size={16} />
             </Link>
           </div>
 
           {/* IPO */}
-          <div className="md:col-span-12 lg:col-span-6 group bg-surface-container-lowest ghost-border rounded-3xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 hover:shadow-xl transition-all">
+          <div className="md:col-span-12 lg:col-span-6 group bg-white border border-slate-100 rounded-3xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 hover:shadow-xl transition-all">
             <div className="flex-1">
-              <span className="material-symbols-outlined text-primary text-3xl md:text-4xl mb-6">rocket_launch</span>
+              <Rocket size={40} className="text-primary mb-6" />
               <h3 className="text-xl md:text-2xl font-bold text-primary mb-3">IPO</h3>
-              <p className="text-on-surface-variant text-sm leading-relaxed mb-6">Invest in the next generation of industry leaders. Streamlined application for upcoming listings.</p>
+              <p className="text-slate-500 text-sm leading-relaxed mb-6">Invest in the next generation of industry leaders. Streamlined application for upcoming listings.</p>
               <Link className="text-primary font-bold text-sm inline-flex items-center gap-1" to="/ipo">
-                Learn More <span className="material-symbols-outlined text-sm">chevron_right</span>
+                Learn More <ChevronRight size={16} />
               </Link>
             </div>
-            <div className="w-full md:w-48 aspect-square rounded-2xl bg-surface-container overflow-hidden">
+            <div className="w-full md:w-48 aspect-square rounded-2xl bg-slate-50 overflow-hidden">
               <img className="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCw8NVkrRRZfGHs4G33fPa3NA0SBjahuUXogbqP-zZoy40L95yJpLbmhmsW1x0C36WE8AEHsv4-FxVylokirfDpZaqVrUDT8g14Y5CtCWDJyQI-hIE1yvbf1wH8ZM0YZYtgKf7iCOe7seMfUSEIfBoRQq3bEkmO0ynZdc0dC1u0Kv7QC7S1wNlRTh8Zeku3oc-r1CkTRH8Zusyj7OPYzwSZxOIqo2t4Z8CmpeuCWKzGSesuxhUR4BtMQW3gD5dXKfO9-zRx_Ku4Sxc" alt="IPO" referrerPolicy="no-referrer" />
             </div>
           </div>
 
           {/* NCD */}
-          <div className="md:col-span-12 lg:col-span-6 group bg-secondary-container rounded-3xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 hover:shadow-xl transition-all">
+          <div className="md:col-span-12 lg:col-span-6 group bg-slate-100 rounded-3xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 hover:shadow-xl transition-all">
             <div className="flex-1">
-              <span className="material-symbols-outlined text-primary text-3xl md:text-4xl mb-6">description</span>
+              <FileText size={40} className="text-primary mb-6" />
               <h3 className="text-xl md:text-2xl font-bold text-primary mb-3">NCD</h3>
-              <p className="text-on-secondary-container text-sm leading-relaxed mb-6">Fixed income solutions through Non-Convertible Debentures. Stable returns with calculated risk.</p>
+              <p className="text-slate-600 text-sm leading-relaxed mb-6">Fixed income solutions through Non-Convertible Debentures. Stable returns with calculated risk.</p>
               <Link className="text-primary font-bold text-sm inline-flex items-center gap-1" to="/ncd">
-                Learn More <span className="material-symbols-outlined text-sm">chevron_right</span>
+                Learn More <ChevronRight size={16} />
               </Link>
             </div>
-            <div className="w-full md:w-48 aspect-square rounded-2xl bg-white/20 flex items-center justify-center backdrop-blur-sm border border-white/30">
-              <span className="material-symbols-outlined text-5xl md:text-6xl text-primary">currency_exchange</span>
+            <div className="w-full md:w-48 aspect-square rounded-2xl bg-white/50 flex items-center justify-center backdrop-blur-sm border border-white/50">
+              <CircleDollarSign size={64} className="text-primary" />
             </div>
           </div>
         </div>

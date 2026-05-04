@@ -1,5 +1,16 @@
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
+import { 
+  BadgeCheck, 
+  Lock, 
+  Zap, 
+  CheckCircle2, 
+  Mail, 
+  User, 
+  Calendar, 
+  ArrowRight, 
+  ShieldCheck 
+} from 'lucide-react';
 
 export default function Demat() {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -31,8 +42,8 @@ export default function Demat() {
               referrerPolicy="no-referrer"
             />
             <div className="space-y-4">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant text-xs font-bold tracking-wider uppercase">
-                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold tracking-wider uppercase border border-emerald-100">
+                <BadgeCheck size={14} />
                 SEBI REGISTERED
               </span>
               <h1 className="text-5xl lg:text-6xl font-extrabold text-primary leading-[1.1] tracking-tight">
@@ -44,13 +55,13 @@ export default function Demat() {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <div className="bg-surface-container-low p-6 rounded-xl border-l-4 border-primary">
-              <span className="material-symbols-outlined text-primary mb-2" style={{ fontVariationSettings: "'FILL' 1" }}>lock</span>
+            <div className="bg-white p-6 rounded-xl border-l-4 border-primary shadow-sm">
+              <Lock size={20} className="text-primary mb-2" />
               <h3 className="font-bold text-primary">256-bit SSL</h3>
               <p className="text-xs text-on-surface-variant">Military grade encryption for your data security.</p>
             </div>
-            <div className="bg-surface-container-low p-6 rounded-xl mt-4">
-              <span className="material-symbols-outlined text-primary mb-2" style={{ fontVariationSettings: "'FILL' 1" }}>bolt</span>
+            <div className="bg-white p-6 rounded-xl mt-4 shadow-sm">
+              <Zap size={20} className="text-primary mb-2" />
               <h3 className="font-bold text-primary">Fast-Track</h3>
               <p className="text-xs text-on-surface-variant">Average account activation in under 24 hours.</p>
             </div>
@@ -67,7 +78,7 @@ export default function Demat() {
             <div className="bg-surface-container-lowest rounded-[2rem] p-12 shadow-[0_20px_40px_rgba(0,31,102,0.06)] text-center space-y-8 animate-in fade-in zoom-in duration-500 relative overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-green-400 to-emerald-600"></div>
               <div className="w-24 h-24 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto shadow-lg animate-bounce">
-                <span className="material-symbols-outlined text-5xl" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+                <CheckCircle2 size={48} />
               </div>
               <div className="space-y-4">
                 <h2 className="text-3xl font-extrabold text-primary">Registration Active!</h2>
@@ -103,7 +114,7 @@ export default function Demat() {
                   <div>
                     <p className="text-[9px] font-bold text-outline uppercase mb-1">KYC Status</p>
                     <p className="font-bold text-emerald-600 text-sm flex items-center gap-1">
-                      <span className="material-symbols-outlined text-xs">verified</span> Completed
+                      <BadgeCheck size={14} /> Completed
                     </p>
                   </div>
                   <div>
@@ -174,9 +185,9 @@ export default function Demat() {
                   <div className="space-y-2">
                     <label className="text-xs font-bold text-on-surface-variant uppercase tracking-wider ml-1">Email Address</label>
                     <div className="relative">
-                      <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">mail</span>
+                      <Mail size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant" />
                       <input 
-                        className="w-full bg-surface-container-low border-none rounded-xl py-4 pl-12 pr-4 focus:ring-2 focus:ring-primary/20 text-on-surface font-medium transition-all" 
+                        className="w-full bg-slate-50 border-none rounded-xl py-4 pl-12 pr-4 focus:ring-2 focus:ring-primary/20 text-on-surface font-medium transition-all" 
                         placeholder="name@domain.com" 
                         type="email" 
                         required
@@ -188,9 +199,9 @@ export default function Demat() {
                   <div className="space-y-2">
                     <label className="text-xs font-bold text-on-surface-variant uppercase tracking-wider ml-1">PAN Number</label>
                     <div className="relative">
-                      <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">badge</span>
+                      <User size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant" />
                       <input 
-                        className="w-full bg-surface-container-low border-none rounded-xl py-4 pl-12 pr-4 focus:ring-2 focus:ring-primary/20 text-on-surface font-medium uppercase transition-all" 
+                        className="w-full bg-slate-50 border-none rounded-xl py-4 pl-12 pr-4 focus:ring-2 focus:ring-primary/20 text-on-surface font-medium uppercase transition-all" 
                         placeholder="ABCDE1234F" 
                         type="text" 
                         required
@@ -208,9 +219,9 @@ export default function Demat() {
                   <div className="space-y-2">
                     <label className="text-xs font-bold text-on-surface-variant uppercase tracking-wider ml-1">Date of Birth</label>
                     <div className="relative">
-                      <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">calendar_today</span>
+                      <Calendar size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant" />
                       <input 
-                        className="w-full bg-surface-container-low border-none rounded-xl py-4 pl-12 pr-4 focus:ring-2 focus:ring-primary/20 text-on-surface font-medium transition-all" 
+                        className="w-full bg-slate-50 border-none rounded-xl py-4 pl-12 pr-4 focus:ring-2 focus:ring-primary/20 text-on-surface font-medium transition-all" 
                         type="date" 
                         required
                         value={formData.dob}
@@ -225,19 +236,19 @@ export default function Demat() {
                     I authorize VS INVESTIFY and its partners to contact me via phone, email, or WhatsApp for my account opening application.
                   </label>
                 </div>
-                <button className="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary py-5 rounded-xl font-bold text-lg shadow-lg hover:scale-[1.01] active:scale-[0.98] transition-all flex items-center justify-center gap-2 group" type="submit">
+                <button className="w-full bg-primary text-white py-5 rounded-xl font-bold text-lg shadow-lg hover:scale-[1.01] active:scale-[0.98] transition-all flex items-center justify-center gap-2 group" type="submit">
                   Continue to KYC
-                  <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </button>
               </form>
               <div className="mt-8 flex items-center justify-center gap-6 opacity-30">
                 <div className="flex items-center gap-1.5">
-                  <span className="material-symbols-outlined text-sm">lock</span>
+                  <Lock size={12} />
                   <span className="text-[9px] font-bold uppercase tracking-[0.15em]">256-Bit Encryption</span>
                 </div>
                 <div className="w-1.5 h-1.5 rounded-full bg-outline-variant/30"></div>
                 <div className="flex items-center gap-1.5">
-                  <span className="material-symbols-outlined text-sm">verified_user</span>
+                  <ShieldCheck size={12} />
                   <span className="text-[9px] font-bold uppercase tracking-[0.15em]">Official Depository Partner</span>
                 </div>
               </div>

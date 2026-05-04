@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { 
+  BadgeCheck, 
+  Send, 
+  Phone, 
+  MessageSquare, 
+  Mail, 
+  MapPin, 
+  Navigation 
+} from 'lucide-react';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -28,8 +36,8 @@ export default function Contact() {
             </h1>
           </div>
           <div className="hidden lg:block pb-4">
-            <div className="flex items-center gap-2 text-on-tertiary-fixed-variant bg-tertiary-fixed px-4 py-2 rounded-full font-bold text-sm">
-              <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
+            <div className="flex items-center gap-2 text-[#002d0d] bg-emerald-50 px-4 py-2 rounded-full font-bold text-sm border border-emerald-100">
+              <BadgeCheck size={18} className="text-emerald-600" />
               SEBI Registered Investment Advisor
             </div>
           </div>
@@ -112,8 +120,8 @@ export default function Contact() {
                   onChange={(e) => setFormData({...formData, message: e.target.value})}
                 ></textarea>
               </div>
-              <button className="w-full py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold rounded-xl shadow-lg hover:scale-[1.01] active:scale-95 transition-all flex items-center justify-center gap-2">
-                <span className="material-symbols-outlined">send</span>
+              <button className="w-full py-4 bg-primary text-white font-bold rounded-xl shadow-lg hover:scale-[1.01] active:scale-95 transition-all flex items-center justify-center gap-2">
+                <Send size={20} />
                 Submit to WhatsApp
               </button>
             </form>
@@ -137,34 +145,34 @@ export default function Contact() {
 
                 <div className="space-y-10">
                   <div className="group/item flex items-start gap-5">
-                    <div className="bg-white/10 p-4 rounded-2xl border border-white/10 group-hover/item:bg-white group-hover/item:text-primary transition-all duration-300">
-                      <span className="material-symbols-outlined text-2xl" style={{ fontVariationSettings: "'FILL' 1" }}>call</span>
+                    <div className="bg-white/5 p-4 rounded-2xl border border-white/10 group-hover/item:bg-white group-hover/item:text-[#0a1128] transition-all duration-300">
+                      <Phone size={24} />
                     </div>
                     <div>
                       <p className="text-xs text-white/60 font-bold uppercase tracking-widest mb-1">Direct Line</p>
-                      <a href="tel:+919660039402" className="text-xl font-bold hover:text-white/80 transition-colors">+91 96600 39402</a>
+                      <a href="tel:+919660039402" className="text-xl font-bold hover:text-[#C5A059] transition-colors">+91 96600 39402</a>
                       <p className="text-[10px] text-white/40 mt-1">Available Mon-Sat, 9 AM - 6 PM IST</p>
                     </div>
                   </div>
 
                   <div className="group/item flex items-start gap-5">
-                    <div className="bg-white/10 p-4 rounded-2xl border border-white/10 group-hover/item:bg-[#25D366] group-hover/item:text-white transition-all duration-300">
-                      <span className="material-symbols-outlined text-2xl" style={{ fontVariationSettings: "'FILL' 1" }}>chat</span>
+                    <div className="bg-white/5 p-4 rounded-2xl border border-white/10 group-hover/item:bg-[#25D366] group-hover/item:text-white transition-all duration-300">
+                      <MessageSquare size={24} />
                     </div>
                     <div>
                       <p className="text-xs text-white/60 font-bold uppercase tracking-widest mb-1">WhatsApp Desk</p>
-                      <a href="https://wa.me/919660039402" target="_blank" rel="noopener noreferrer" className="text-xl font-bold hover:text-white/80 transition-colors">+91 96600 39402</a>
+                      <a href="https://wa.me/919660039402" target="_blank" rel="noopener noreferrer" className="text-xl font-bold hover:text-[#25D366] transition-colors">+91 96600 39402</a>
                       <p className="text-[10px] text-white/40 mt-1">Fastest response for portfolio queries</p>
                     </div>
                   </div>
 
                   <div className="group/item flex items-start gap-5">
-                    <div className="bg-white/10 p-4 rounded-2xl border border-white/10 group-hover/item:bg-white group-hover/item:text-primary transition-all duration-300">
-                      <span className="material-symbols-outlined text-2xl" style={{ fontVariationSettings: "'FILL' 1" }}>mail</span>
+                    <div className="bg-white/5 p-4 rounded-2xl border border-white/10 group-hover/item:bg-white group-hover/item:text-[#0a1128] transition-all duration-300">
+                      <Mail size={24} />
                     </div>
                     <div>
                       <p className="text-xs text-white/60 font-bold uppercase tracking-widest mb-1">Global Desk</p>
-                      <a href="mailto:info@vsinvestify.in" className="text-xl font-bold hover:text-white/80 transition-colors">info@vsinvestify.in</a>
+                      <a href="mailto:info@vsinvestify.in" className="text-xl font-bold hover:text-[#C5A059] transition-colors">info@vsinvestify.in</a>
                       <p className="text-[10px] text-white/40 mt-1">For institutional & NRE inquiries</p>
                     </div>
                   </div>
@@ -197,7 +205,7 @@ export default function Contact() {
               <div className="relative z-10">
                 <div className="flex items-center gap-4 mb-8">
                   <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center text-primary">
-                    <span className="material-symbols-outlined text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>location_on</span>
+                    <MapPin size={28} />
                   </div>
                   <div>
                     <span className="text-[10px] font-bold text-primary uppercase tracking-widest mb-1 block">Headquarters</span>
@@ -210,13 +218,13 @@ export default function Contact() {
                       B-42 First floor Rangoli plaza Maharana pratap road vaishali Nagar Jaipur 302034
                     </p>
                     <a 
-                      className="inline-flex items-center gap-3 bg-primary text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 group" 
+                      className="inline-flex items-center gap-3 bg-primary text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-primary/90 transition-all shadow-lg group" 
                       href="https://www.google.com/maps/search/?api=1&query=B-42 First floor Rangoli plaza Maharana pratap road vaishali Nagar Jaipur 302034"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       View on Maps
-                      <span className="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">directions</span>
+                      <Navigation size={18} className="group-hover:translate-x-1 transition-transform" />
                     </a>
                   </div>
                   <div className="hidden md:block">
@@ -241,8 +249,8 @@ export default function Contact() {
             <div className="flex flex-col gap-6">
               <div className="flex-1 bg-white p-8 rounded-[2.5rem] border border-outline-variant/5 hover:shadow-xl transition-all duration-500 hover:-translate-x-2 cursor-default group">
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-primary/5 rounded-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-500">
-                    <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>location_on</span>
+                  <div className="w-10 h-10 bg-slate-50 rounded-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-500">
+                    <MapPin size={24} />
                   </div>
                   <div>
                     <span className="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-0.5 block opacity-60">Regional Node</span>
@@ -252,8 +260,8 @@ export default function Contact() {
               </div>
               <div className="flex-1 bg-white p-8 rounded-[2.5rem] border border-outline-variant/5 hover:shadow-xl transition-all duration-500 hover:-translate-x-2 cursor-default group">
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-primary/5 rounded-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-500">
-                    <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>location_on</span>
+                  <div className="w-10 h-10 bg-slate-50 rounded-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-500">
+                    <MapPin size={24} />
                   </div>
                   <div>
                     <span className="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-0.5 block opacity-60">Regional Node</span>

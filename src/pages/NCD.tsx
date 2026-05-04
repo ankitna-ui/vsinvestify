@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { FileText, CircleDollarSign, ShieldCheck } from 'lucide-react';
 
 export default function NCD() {
   return (
@@ -31,20 +32,20 @@ export default function NCD() {
       <section className="py-16 md:py-24 px-6 md:px-8 bg-surface-container-low mt-16 md:mt-24 -mx-6 md:-mx-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            <div className="bg-surface-container-lowest p-8 md:p-10 rounded-[2rem] shadow-sm text-center md:text-left">
-              <span className="material-symbols-outlined text-primary text-3xl md:text-4xl mb-6">description</span>
+            <div className="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm text-center md:text-left border border-slate-100 group hover:shadow-xl transition-all duration-500">
+              <FileText className="text-primary mb-6 group-hover:scale-110 transition-transform" size={32} />
               <h3 className="text-lg md:text-xl font-bold text-primary mb-4">Secured NCDs</h3>
-              <p className="text-on-surface-variant text-sm md:text-base">High-security fixed income instruments backed by company assets for peace of mind.</p>
+              <p className="text-slate-500 text-sm md:text-base">High-security fixed income instruments backed by company assets for peace of mind.</p>
             </div>
-            <div className="bg-surface-container-lowest p-8 md:p-10 rounded-[2rem] shadow-sm text-center md:text-left">
-              <span className="material-symbols-outlined text-primary text-3xl md:text-4xl mb-6">currency_exchange</span>
+            <div className="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm text-center md:text-left border border-slate-100 group hover:shadow-xl transition-all duration-500">
+              <CircleDollarSign className="text-primary mb-6 group-hover:scale-110 transition-transform" size={32} />
               <h3 className="text-lg md:text-xl font-bold text-primary mb-4">High Yield</h3>
-              <p className="text-on-surface-variant text-sm md:text-base">Earn superior returns compared to traditional fixed deposits with our curated NCD selection.</p>
+              <p className="text-slate-500 text-sm md:text-base">Earn superior returns compared to traditional fixed deposits with our curated NCD selection.</p>
             </div>
-            <div className="bg-surface-container-lowest p-8 md:p-10 rounded-[2rem] shadow-sm text-center md:text-left">
-              <span className="material-symbols-outlined text-primary text-3xl md:text-4xl mb-6">verified</span>
+            <div className="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm text-center md:text-left border border-slate-100 group hover:shadow-xl transition-all duration-500">
+              <ShieldCheck className="text-primary mb-6 group-hover:scale-110 transition-transform" size={32} />
               <h3 className="text-lg md:text-xl font-bold text-primary mb-4">Credit Ratings</h3>
-              <p className="text-on-surface-variant text-sm md:text-base">We only offer NCDs with high credit ratings from leading agencies like CRISIL and ICRA.</p>
+              <p className="text-slate-500 text-sm md:text-base">We only offer NCDs with high credit ratings from leading agencies like CRISIL and ICRA.</p>
             </div>
           </div>
         </div>
