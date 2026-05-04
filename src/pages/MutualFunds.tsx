@@ -1,52 +1,91 @@
+import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
+import { Wallet, PieChart, TrendingUp, ShieldCheck, Heart, Repeat, ArrowRight } from 'lucide-react';
+import mutualFundsHero from '../images/mutual_funds_hero.png';
 
 export default function MutualFunds() {
-  return (
-    <main className="pt-32 md:pt-40 pb-16 md:pb-24 px-6 md:px-8 max-w-7xl mx-auto">
-      <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <div className="space-y-6 md:space-y-8 text-center lg:text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-high border border-outline-variant/20">
-            <span className="w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span>
-            <span className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Wealth Management</span>
-          </div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-primary text-editorial-contrast leading-[1.1]">
-            Mutual <br className="hidden md:block" />Funds
-          </h1>
-          <p className="text-base md:text-lg text-on-surface-variant max-w-lg mx-auto lg:mx-0 leading-relaxed">
-            Professional asset management tailored to your goals. Access a curated selection of equity, debt, and hybrid funds from top-tier AMCs with our expert advisory.
-          </p>
-          <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
-            <Link className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-8 py-4 rounded-xl font-bold text-sm md:text-md hover:scale-[1.05] transition-all shadow-xl shadow-primary/20" to="/demat">Start SIP Now</Link>
-            <Link className="border border-outline-variant/30 text-primary px-8 py-4 rounded-xl font-bold text-sm md:text-md hover:bg-surface-container-low transition-all" to="/contact">Consult an Advisor</Link>
-          </div>
-        </div>
-        <div className="relative">
-          <div className="absolute -inset-4 bg-gradient-to-tr from-primary/5 to-transparent rounded-[2rem] blur-3xl -z-10"></div>
-          <div className="bg-surface-container-lowest rounded-[2rem] p-4 shadow-[0_40px_80px_rgba(0,31,102,0.08)] overflow-hidden max-w-md mx-auto lg:max-w-none">
-            <img className="w-full h-[300px] md:h-[400px] object-cover rounded-[1.5rem]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCw8NVkrRRZfGHs4G33fPa3NA0SBjahuUXogbqP-zZoy40L95yJpLbmhmsW1x0C36WE8AEHsv4-FxVylokirfDpZaqVrUDT8g14Y5CtCWDJyQI-hIE1yvbf1wH8ZM0YZYtgKf7iCOe7seMfUSEIfBoRQq3bEkmO0ynZdc0dC1u0Kv7QC7S1wNlRTh8Zeku3oc-r1CkTRH8Zusyj7OPYzwSZxOIqo2t4Z8CmpeuCWKzGSesuxhUR4BtMQW3gD5dXKfO9-zRx_Ku4Sxc" alt="Mutual Funds" referrerPolicy="no-referrer" />
-          </div>
-        </div>
-      </div>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+  };
 
-      <section className="py-16 md:py-24 px-6 md:px-8 bg-surface-container-low mt-16 md:mt-24 -mx-6 md:-mx-8">
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.6 } }
+  };
+
+  return (
+    <main className="pt-32 pb-20 overflow-hidden font-sans">
+      {/* Hero Section */}
+      <section className="px-6 md:px-8 max-w-7xl mx-auto mb-20 md:mb-32">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <motion.div 
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-8"
+          >
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100">
+              <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-blue-700">Diversified Wealth Building</span>
+            </div>
+            <h1 className="text-5xl md:text-7xl font-extrabold text-[#001f66] leading-[1.05] tracking-tight">
+              Curated <br /> <span className="text-slate-400">Mutual Funds.</span>
+            </h1>
+            <p className="text-lg text-slate-500 leading-relaxed max-w-lg">
+              Invest in top-performing funds tailored to your financial goals. From tax-saving ELSS to aggressive small-cap growth, we guide your compounding journey.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Link to="/demat" className="bg-[#001f66] text-white px-8 py-4 rounded-xl font-bold shadow-xl shadow-blue-900/20 hover:scale-105 transition-transform flex items-center gap-2">
+                Start SIP <ArrowRight size={18} />
+              </Link>
+              <Link to="/contact" className="border border-slate-200 text-[#001f66] px-8 py-4 rounded-xl font-bold hover:bg-slate-50 transition-colors">Goal Planning</Link>
+            </div>
+          </motion.div>
+          <motion.div 
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="relative"
+          >
+            <div className="aspect-square rounded-[3rem] overflow-hidden shadow-2xl border border-slate-100">
+              <img src={mutualFundsHero} alt="Mutual Funds" className="w-full h-full object-cover" />
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Funds Grid */}
+      <section className="bg-slate-50 py-24 px-6 md:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            <div className="bg-surface-container-lowest p-8 md:p-10 rounded-[2rem] shadow-sm text-center md:text-left">
-              <span className="material-symbols-outlined text-primary text-3xl md:text-4xl mb-6">pie_chart</span>
-              <h3 className="text-lg md:text-xl font-bold text-primary mb-4">Equity Funds</h3>
-              <p className="text-on-surface-variant text-sm md:text-base">Long-term wealth creation through diversified equity portfolios managed by top fund managers.</p>
-            </div>
-            <div className="bg-surface-container-lowest p-8 md:p-10 rounded-[2rem] shadow-sm text-center md:text-left">
-              <span className="material-symbols-outlined text-primary text-3xl md:text-4xl mb-6">account_balance</span>
-              <h3 className="text-lg md:text-xl font-bold text-primary mb-4">Debt Funds</h3>
-              <p className="text-on-surface-variant text-sm md:text-base">Stable income and capital preservation through high-quality fixed income instruments.</p>
-            </div>
-            <div className="bg-surface-container-lowest p-8 md:p-10 rounded-[2rem] shadow-sm text-center md:text-left">
-              <span className="material-symbols-outlined text-primary text-3xl md:text-4xl mb-6">balance</span>
-              <h3 className="text-lg md:text-xl font-bold text-primary mb-4">Hybrid Funds</h3>
-              <p className="text-on-surface-variant text-sm md:text-base">The best of both worlds. Balanced risk and reward through dynamic asset allocation.</p>
-            </div>
-          </div>
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          >
+            {[
+              { title: "Smart SIP", desc: "Automate your savings with flexible Systematic Investment Plans starting as low as ₹500.", icon: <Repeat size={24} /> },
+              { title: "Tax Savers (ELSS)", desc: "Save up to ₹46,800 in taxes under Section 80C while building long-term wealth.", icon: <ShieldCheck size={24} /> },
+              { title: "Sector Focus", desc: "Capitalize on booming sectors like Tech, Pharma, and Infra with specialized thematic funds.", icon: <PieChart size={24} /> },
+              { title: "Retirement Planning", desc: "Long-horizon wealth creation strategies to ensure a worry-free post-work life.", icon: <Heart size={24} /> },
+              { title: "Portfolio Rebalancing", desc: "Expert guidance on when to switch funds to maintain your target asset allocation.", icon: <Wallet size={24} /> },
+              { title: "Lumpsum Investing", icon: <TrendingUp size={24} />, desc: "Deploy your surplus capital into carefully vetted debt or equity funds for maximum alpha." }
+            ].map((fund, i) => (
+              <motion.div 
+                key={i} 
+                variants={itemVariants}
+                className="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all group"
+              >
+                <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-500">
+                  {fund.icon}
+                </div>
+                <h3 className="text-xl font-bold text-[#001f66] mb-3">{fund.title}</h3>
+                <p className="text-slate-500 text-sm leading-relaxed opacity-80">{fund.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
     </main>

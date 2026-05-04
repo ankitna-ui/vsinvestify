@@ -53,10 +53,16 @@ export default function Footer() {
             <div className="space-y-6">
               <h4 className="text-xs font-bold uppercase tracking-widest text-[#001f66]">Investments</h4>
               <ul className="space-y-4">
-                {['Equity Trading', 'Derivatives', 'Commodity', 'Mutual Funds', 'IPO Center'].map((item) => (
-                  <li key={item}>
-                    <Link to={`/${item.toLowerCase().replace(' ', '-')}`} className="text-slate-500 hover:text-[#001f66] text-sm transition-colors">
-                      {item}
+                {[
+                  { name: 'Equity Trading', path: '/equity' },
+                  { name: 'Derivatives', path: '/derivatives' },
+                  { name: 'Commodity', path: '/commodity' },
+                  { name: 'Mutual Funds', path: '/mutual-funds' },
+                  { name: 'IPO Center', path: '/ipo' }
+                ].map((item) => (
+                  <li key={item.name}>
+                    <Link to={item.path} className="text-slate-500 hover:text-[#001f66] text-sm transition-colors">
+                      {item.name}
                     </Link>
                   </li>
                 ))}
@@ -66,10 +72,16 @@ export default function Footer() {
             <div className="space-y-6">
               <h4 className="text-xs font-bold uppercase tracking-widest text-[#001f66]">Company</h4>
               <ul className="space-y-4">
-                {['About Us', 'Our Team', 'Careers', 'Contact Us', 'Support'].map((item) => (
-                  <li key={item}>
-                    <Link to={`/${item.toLowerCase().replace(' ', '-')}`} className="text-slate-500 hover:text-[#001f66] text-sm transition-colors">
-                      {item}
+                {[
+                  { name: 'Corporate Profile', path: '/about' },
+                  { name: 'Private Wealth Desk', path: '/contact' },
+                  { name: 'Career Opportunities', path: '/careers' },
+                  { name: 'Get in Touch', path: '/contact' },
+                  { name: 'Client Support', path: '/contact' }
+                ].map((item) => (
+                  <li key={item.name}>
+                    <Link to={item.path} className="text-slate-500 hover:text-[#001f66] text-sm transition-colors">
+                      {item.name}
                     </Link>
                   </li>
                 ))}
@@ -85,11 +97,11 @@ export default function Footer() {
                 </div>
                 <div className="flex items-center gap-3">
                   <Phone size={18} className="text-[#C5A059] shrink-0" />
-                  <p>+91 96600 39403</p>
+                  <p>+91 96600 39402</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail size={18} className="text-[#C5A059] shrink-0" />
-                  <p>support@vsinvestify.in</p>
+                  <p>info@vsinvestify.in</p>
                 </div>
               </div>
             </div>
@@ -130,13 +142,18 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-[11px] text-slate-400 font-bold uppercase tracking-widest">
+          <p className="text-[11px] text-slate-400 font-bold uppercase tracking-widest flex flex-wrap items-center gap-2">
             © {currentYear} VS INVESTIFY. ALL RIGHTS RESERVED.
+            <span className="hidden md:inline opacity-30">|</span>
+            <span className="flex items-center gap-1">
+              DESIGNED & DEVELOPED BY 
+              <a href="https://www.weblozy.com" target="_blank" rel="noopener noreferrer" className="text-[#001f66] hover:text-[#C5A059] transition-colors decoration-dotted underline underline-offset-4">WEBLOZY</a>
+            </span>
           </p>
           <div className="flex gap-8 text-[11px] font-bold uppercase tracking-widest text-slate-400">
-            <Link to="#" className="hover:text-[#001f66] transition-colors">Privacy Policy</Link>
-            <Link to="#" className="hover:text-[#001f66] transition-colors">Terms of Service</Link>
-            <Link to="#" className="hover:text-[#001f66] transition-colors">Risk Disclosure</Link>
+            <Link to="/privacy-policy" className="hover:text-[#001f66] transition-colors">Privacy Policy</Link>
+            <Link to="/terms-of-service" className="hover:text-[#001f66] transition-colors">Terms of Service</Link>
+            <Link to="/risk-disclosure" className="hover:text-[#001f66] transition-colors">Risk Disclosure</Link>
           </div>
         </div>
       </div>

@@ -48,51 +48,58 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className={`fixed top-0 w-full z-[100] transition-all duration-500 ${
+    <nav className={`fixed top-0 w-full z-[100] transition-all duration-700 ${
       scrolled 
-        ? (isUnlisted ? 'py-3 bg-[#0a1128]/90 border-b border-white/10 shadow-2xl' : 'py-3 bg-white/80 border-b border-slate-100 shadow-xl') 
-        : (isUnlisted ? 'py-5 bg-transparent' : 'py-5 bg-white/50')
-    } backdrop-blur-xl`}>
-      <div className="flex justify-between items-center px-6 md:px-10 max-w-[1440px] mx-auto">
+        ? (isUnlisted ? 'py-3 bg-[#0a1128]/95 border-b border-white/5 shadow-[0_10px_40px_rgba(0,0,0,0.4)]' : 'py-3 bg-white/90 border-b border-slate-200 shadow-[0_10px_40px_rgba(0,0,0,0.05)]') 
+        : (isUnlisted ? 'py-6 bg-transparent' : 'py-6 bg-white/40')
+    } backdrop-blur-2xl`}>
+      <div className="flex justify-between items-center px-6 md:px-12 max-w-[1440px] mx-auto">
         <Link to="/" className="flex items-center relative z-[110] group">
-          <img 
-            src="https://lh3.googleusercontent.com/d/1EHq6iGOjfeXHjP2CAEXHMLMgB7QBNSxY" 
-            alt="VS INVESTIFY Logo" 
-            className={`transition-all duration-500 ${scrolled ? 'h-8 md:h-10' : 'h-10 md:h-12'} w-auto object-contain group-hover:scale-105`}
-            referrerPolicy="no-referrer"
-          />
+          <div className="relative">
+            <div className="absolute -inset-2 bg-white/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <img 
+              src="https://lh3.googleusercontent.com/d/1EHq6iGOjfeXHjP2CAEXHMLMgB7QBNSxY" 
+              alt="VS INVESTIFY Logo" 
+              className={`transition-all duration-500 relative z-10 ${scrolled ? 'h-9 md:h-11' : 'h-11 md:h-14'} w-auto object-contain group-hover:scale-110`}
+              referrerPolicy="no-referrer"
+            />
+          </div>
         </Link>
 
-        {/* Desktop Navigation - Visible from MD for better tablet support */}
-        <div className="hidden md:flex items-center gap-6 lg:gap-10 font-['Inter'] font-semibold text-[13px] uppercase tracking-wider antialiased">
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-8 lg:gap-12 font-['Inter'] font-bold text-[11px] uppercase tracking-[0.2em] antialiased">
           {navLinks.map((link) => (
             <Link 
               key={link.path}
               className={`${location.pathname === link.path ? (isUnlisted ? 'text-[#C5A059]' : 'text-[#001f66]') : (isUnlisted ? 'text-slate-400' : 'text-slate-500')} hover:text-[#001f66] transition-all duration-300 relative group py-2`} 
               to={link.path}
             >
-              {link.name}
-              <span className={`absolute bottom-0 left-0 w-0 h-0.5 ${isUnlisted ? 'bg-[#C5A059]' : 'bg-[#001f66]'} transition-all duration-300 group-hover:w-full ${location.pathname === link.path ? 'w-full' : ''}`}></span>
+              <span className="relative z-10">{link.name}</span>
+              <motion.span 
+                className={`absolute bottom-0 left-0 w-0 h-[3px] rounded-full ${isUnlisted ? 'bg-[#C5A059]' : 'bg-[#001f66]'} transition-all duration-500 group-hover:w-full ${location.pathname === link.path ? 'w-full' : ''}`}
+                initial={false}
+              />
             </Link>
           ))}
         </div>
 
-        <div className="flex items-center gap-4 relative z-[110]">
+        <div className="flex items-center gap-6 relative z-[110]">
           <Link 
-            className={`${isUnlisted ? 'bg-[#C5A059] text-[#0a1128] shadow-[#C5A059]/20' : 'bg-[#001f66] text-white shadow-[#001f66]/20'} hidden lg:flex items-center gap-2 px-7 py-3 rounded-2xl font-bold text-sm hover:scale-[1.05] hover:-translate-y-0.5 transition-all duration-300 cursor-pointer active:scale-95 shadow-xl`} 
+            className={`${isUnlisted ? 'bg-gradient-to-r from-[#C5A059] to-[#B08B44] text-[#0a1128] shadow-[#C5A059]/30' : 'bg-[#001f66] text-white shadow-[#001f66]/20'} hidden lg:flex items-center gap-3 px-9 py-4 rounded-2xl font-black text-xs uppercase tracking-[0.15em] hover:scale-[1.05] hover:-translate-y-1 transition-all duration-500 cursor-pointer active:scale-95 shadow-2xl overflow-hidden group/btn relative`} 
             to="/demat"
           >
-            Open Demat Account
-            <ArrowRight size={16} />
+            <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700 ease-in-out skew-x-[-20deg]"></div>
+            <span className="relative z-10">Open Account</span>
+            <ArrowRight size={14} className="relative z-10 group-hover/btn:translate-x-1 transition-transform" />
           </Link>
           
           {/* Mobile Menu Toggle */}
           <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`md:hidden p-2.5 rounded-2xl transition-all ${isUnlisted ? 'text-white bg-white/5 hover:bg-white/10' : 'text-[#001f66] bg-slate-100 hover:bg-slate-200'} active:scale-90 shadow-sm`}
+            className={`md:hidden p-3.5 rounded-2xl transition-all ${isUnlisted ? 'text-white bg-white/5 hover:bg-white/10' : 'text-[#001f66] bg-slate-100 hover:bg-slate-200'} active:scale-90 shadow-sm border ${isUnlisted ? 'border-white/10' : 'border-slate-200'}`}
             aria-label="Toggle menu"
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
       </div>
@@ -168,17 +175,17 @@ export default function Navbar() {
                     className={`pt-8 border-t flex flex-col sm:flex-row sm:items-center justify-between gap-6 ${isUnlisted ? 'border-white/10' : 'border-slate-100'}`}
                   >
                     <div className="flex flex-col gap-3">
-                      <a href="tel:+919660039403" className="flex items-center gap-3 group">
+                      <a href="tel:+919660039402" className="flex items-center gap-3 group">
                         <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${isUnlisted ? 'bg-white/5' : 'bg-slate-100'} group-hover:scale-110 transition-transform`}>
                           <Phone size={14} className="text-[#C5A059]" />
                         </div>
-                        <span className={`text-sm font-bold ${isUnlisted ? 'text-slate-300' : 'text-slate-600'}`}>+91 96600 39403</span>
+                        <span className={`text-sm font-bold ${isUnlisted ? 'text-slate-300' : 'text-slate-600'}`}>+91 96600 39402</span>
                       </a>
-                      <a href="mailto:support@vsinvestify.in" className="flex items-center gap-3 group">
+                      <a href="mailto:info@vsinvestify.in" className="flex items-center gap-3 group">
                         <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${isUnlisted ? 'bg-white/5' : 'bg-slate-100'} group-hover:scale-110 transition-transform`}>
                           <Mail size={14} className="text-[#C5A059]" />
                         </div>
-                        <span className={`text-sm font-bold ${isUnlisted ? 'text-slate-300' : 'text-slate-600'}`}>support@vsinvestify.in</span>
+                        <span className={`text-sm font-bold ${isUnlisted ? 'text-slate-300' : 'text-slate-600'}`}>info@vsinvestify.in</span>
                       </a>
                     </div>
 

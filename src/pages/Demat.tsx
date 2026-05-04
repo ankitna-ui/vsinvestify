@@ -4,10 +4,10 @@ import React, { useState } from 'react';
 export default function Demat() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
-    mobile: '9876543210',
-    email: 'investor@vsinvestify.com',
-    pan: 'ABCDE1234F',
-    dob: '15/08/1990'
+    mobile: '',
+    email: '',
+    pan: '',
+    dob: ''
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -219,15 +219,15 @@ export default function Demat() {
                   <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
                 </button>
               </form>
-              <div className="mt-8 flex items-center justify-center gap-6 opacity-40 grayscale">
-                <div className="flex items-center gap-1">
-                  <span className="material-symbols-outlined text-sm">security</span>
-                  <span className="text-[10px] font-bold uppercase tracking-widest">Secure Socket</span>
+              <div className="mt-8 flex items-center justify-center gap-6 opacity-30">
+                <div className="flex items-center gap-1.5">
+                  <span className="material-symbols-outlined text-sm">lock</span>
+                  <span className="text-[9px] font-bold uppercase tracking-[0.15em]">256-Bit Encryption</span>
                 </div>
-                <div className="h-px w-8 bg-outline-variant"></div>
-                <div className="flex items-center gap-1">
-                  <span className="material-symbols-outlined text-sm">database</span>
-                  <span className="text-[10px] font-bold uppercase tracking-widest">CDSL/NSDL</span>
+                <div className="w-1.5 h-1.5 rounded-full bg-outline-variant/30"></div>
+                <div className="flex items-center gap-1.5">
+                  <span className="material-symbols-outlined text-sm">verified_user</span>
+                  <span className="text-[9px] font-bold uppercase tracking-[0.15em]">Official Depository Partner</span>
                 </div>
               </div>
             </div>

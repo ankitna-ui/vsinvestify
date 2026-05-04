@@ -1,52 +1,91 @@
+import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
+import { Rocket, FileText, CheckCircle, Calendar, TrendingUp, HelpCircle, ArrowRight } from 'lucide-react';
+import ipoHero from '../images/ipo_hero.png';
 
 export default function IPO() {
-  return (
-    <main className="pt-32 md:pt-40 pb-16 md:pb-24 px-6 md:px-8 max-w-7xl mx-auto">
-      <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <div className="space-y-6 md:space-y-8 text-center lg:text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-high border border-outline-variant/20">
-            <span className="w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span>
-            <span className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Primary Market</span>
-          </div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-primary text-editorial-contrast leading-[1.1]">
-            IPO <br className="hidden md:block" />Center
-          </h1>
-          <p className="text-base md:text-lg text-on-surface-variant max-w-lg mx-auto lg:mx-0 leading-relaxed">
-            Invest in the next generation of industry leaders. Our streamlined IPO application process ensures you never miss a listing opportunity in the primary market.
-          </p>
-          <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
-            <Link className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-8 py-4 rounded-xl font-bold text-sm md:text-md hover:scale-[1.05] transition-all shadow-xl shadow-primary/20" to="/demat">Apply for IPO</Link>
-            <Link className="border border-outline-variant/30 text-primary px-8 py-4 rounded-xl font-bold text-sm md:text-md hover:bg-surface-container-low transition-all" to="/contact">Consult an Expert</Link>
-          </div>
-        </div>
-        <div className="relative">
-          <div className="absolute -inset-4 bg-gradient-to-tr from-primary/5 to-transparent rounded-[2rem] blur-3xl -z-10"></div>
-          <div className="bg-surface-container-lowest rounded-[2rem] p-4 shadow-[0_40px_80px_rgba(0,31,102,0.08)] overflow-hidden max-w-md mx-auto lg:max-w-none">
-            <img className="w-full h-[300px] md:h-[400px] object-cover rounded-[1.5rem]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCw8NVkrRRZfGHs4G33fPa3NA0SBjahuUXogbqP-zZoy40L95yJpLbmhmsW1x0C36WE8AEHsv4-FxVylokirfDpZaqVrUDT8g14Y5CtCWDJyQI-hIE1yvbf1wH8ZM0YZYtgKf7iCOe7seMfUSEIfBoRQq3bEkmO0ynZdc0dC1u0Kv7QC7S1wNlRTh8Zeku3oc-r1CkTRH8Zusyj7OPYzwSZxOIqo2t4Z8CmpeuCWKzGSesuxhUR4BtMQW3gD5dXKfO9-zRx_Ku4Sxc" alt="IPO Center" referrerPolicy="no-referrer" />
-          </div>
-        </div>
-      </div>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+  };
 
-      <section className="py-16 md:py-24 px-6 md:px-8 bg-surface-container-low mt-16 md:mt-24 -mx-6 md:-mx-8">
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.6 } }
+  };
+
+  return (
+    <main className="pt-32 pb-20 overflow-hidden font-sans">
+      {/* Hero Section */}
+      <section className="px-6 md:px-8 max-w-7xl mx-auto mb-20 md:mb-32">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <motion.div 
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-8"
+          >
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 border border-purple-100">
+              <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-purple-700">New Market Listings</span>
+            </div>
+            <h1 className="text-5xl md:text-7xl font-extrabold text-[#001f66] leading-[1.05] tracking-tight">
+              IPO <br /> <span className="text-slate-400">Center.</span>
+            </h1>
+            <p className="text-lg text-slate-500 leading-relaxed max-w-lg">
+              Get priority access to the most anticipated public offerings. We simplify the application process so you can invest in the market leaders of tomorrow.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Link to="/demat" className="bg-[#001f66] text-white px-8 py-4 rounded-xl font-bold shadow-xl shadow-blue-900/20 hover:scale-105 transition-transform flex items-center gap-2">
+                Apply for IPO <ArrowRight size={18} />
+              </Link>
+              <Link to="/contact" className="border border-slate-200 text-[#001f66] px-8 py-4 rounded-xl font-bold hover:bg-slate-50 transition-colors">Upcoming List</Link>
+            </div>
+          </motion.div>
+          <motion.div 
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="relative"
+          >
+            <div className="aspect-square rounded-[3rem] overflow-hidden shadow-2xl border border-slate-100">
+              <img src={ipoHero} alt="IPO Center" className="w-full h-full object-cover" />
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* IPO Grid */}
+      <section className="bg-slate-50 py-24 px-6 md:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            <div className="bg-surface-container-lowest p-8 md:p-10 rounded-[2rem] shadow-sm text-center md:text-left">
-              <span className="material-symbols-outlined text-primary text-3xl md:text-4xl mb-6">rocket_launch</span>
-              <h3 className="text-lg md:text-xl font-bold text-primary mb-4">Mainboard IPOs</h3>
-              <p className="text-on-surface-variant text-sm md:text-base">Invest in large-cap companies entering the public markets with our expert research and easy application.</p>
-            </div>
-            <div className="bg-surface-container-lowest p-8 md:p-10 rounded-[2rem] shadow-sm text-center md:text-left">
-              <span className="material-symbols-outlined text-primary text-3xl md:text-4xl mb-6">storefront</span>
-              <h3 className="text-lg md:text-xl font-bold text-primary mb-4">SME IPOs</h3>
-              <p className="text-on-surface-variant text-sm md:text-base">Early-stage investment opportunities in high-growth small and medium enterprises.</p>
-            </div>
-            <div className="bg-surface-container-lowest p-8 md:p-10 rounded-[2rem] shadow-sm text-center md:text-left">
-              <span className="material-symbols-outlined text-primary text-3xl md:text-4xl mb-6">description</span>
-              <h3 className="text-lg md:text-xl font-bold text-primary mb-4">IPO Research</h3>
-              <p className="text-on-surface-variant text-sm md:text-base">Deep-dive analysis of upcoming listings, valuations, and long-term growth potential.</p>
-            </div>
-          </div>
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          >
+            {[
+              { title: "One-Click Application", desc: "Apply for any IPO in seconds using UPI. Seamless, paperless, and instantaneous.", icon: <CheckCircle size={24} /> },
+              { title: "In-depth Analysis", desc: "Access comprehensive research reports on every mainboard and SME IPO.", icon: <FileText size={24} /> },
+              { title: "SME Opportunities", desc: "Unlock growth by investing in high-potential Small and Medium Enterprises.", icon: <Rocket size={24} /> },
+              { title: "Live Tracking", desc: "Real-time subscription data and grey market premium (GMP) insights.", icon: <TrendingUp size={24} /> },
+              { title: "IPO Calendar", desc: "Stay ahead with our curated calendar of upcoming, active, and recent listings.", icon: <Calendar size={24} /> },
+              { title: "Expert Guidance", desc: "Not sure whether to apply? Get 'Apply' or 'Avoid' ratings from our analysts.", icon: <HelpCircle size={24} /> }
+            ].map((feature, i) => (
+              <motion.div 
+                key={i} 
+                variants={itemVariants}
+                className="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all group"
+              >
+                <div className="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-purple-600 mb-6 group-hover:bg-purple-600 group-hover:text-white transition-colors duration-500">
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-bold text-[#001f66] mb-3">{feature.title}</h3>
+                <p className="text-slate-500 text-sm leading-relaxed opacity-80">{feature.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
     </main>

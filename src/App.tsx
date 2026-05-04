@@ -14,10 +14,17 @@ import Commodity from './pages/Commodity';
 import MutualFunds from './pages/MutualFunds';
 import IPO from './pages/IPO';
 import NCD from './pages/NCD';
+import Preloader from './components/Preloader';
+import ScrollToTop from './components/ScrollToTop';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
+import RiskDisclosure from './pages/RiskDisclosure';
 
 export default function App() {
   return (
     <Router>
+      <ScrollToTop />
+      <Preloader />
       <div className="min-h-screen flex flex-col">
         <Navbar />
         <div className="flex-grow">
@@ -34,6 +41,9 @@ export default function App() {
             <Route path="/mutual-funds" element={<MutualFunds />} />
             <Route path="/ipo" element={<IPO />} />
             <Route path="/ncd" element={<NCD />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="/risk-disclosure" element={<RiskDisclosure />} />
           </Routes>
         </div>
         <FloatingButtons />

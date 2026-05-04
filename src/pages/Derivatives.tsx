@@ -1,52 +1,91 @@
+import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
+import { Activity, Layers, Target, Zap, Shield, TrendingDown, ArrowRight } from 'lucide-react';
+import derivativesHero from '../images/derivatives_hero.png';
 
 export default function Derivatives() {
-  return (
-    <main className="pt-32 md:pt-40 pb-16 md:pb-24 px-6 md:px-8 max-w-7xl mx-auto">
-      <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <div className="space-y-6 md:space-y-8 text-center lg:text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-high border border-outline-variant/20">
-            <span className="w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span>
-            <span className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">High Leverage</span>
-          </div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-primary text-editorial-contrast leading-[1.1]">
-            Derivative <br className="hidden md:block" />Strategies
-          </h1>
-          <p className="text-base md:text-lg text-on-surface-variant max-w-lg mx-auto lg:mx-0 leading-relaxed">
-            Master market volatility with our sophisticated Futures and Options trading desk. Designed for the strategic investor seeking to hedge risks or capitalize on price movements with precision.
-          </p>
-          <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
-            <Link className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-8 py-4 rounded-xl font-bold text-sm md:text-md hover:scale-[1.05] transition-all shadow-xl shadow-primary/20" to="/demat">Activate F&O Segment</Link>
-            <Link className="border border-outline-variant/30 text-primary px-8 py-4 rounded-xl font-bold text-sm md:text-md hover:bg-surface-container-low transition-all" to="/contact">Consult an Expert</Link>
-          </div>
-        </div>
-        <div className="relative">
-          <div className="absolute -inset-4 bg-gradient-to-tr from-primary/5 to-transparent rounded-[2rem] blur-3xl -z-10"></div>
-          <div className="bg-surface-container-lowest rounded-[2rem] p-4 shadow-[0_40px_80px_rgba(0,31,102,0.08)] overflow-hidden max-w-md mx-auto lg:max-w-none">
-            <img className="w-full h-[300px] md:h-[400px] object-cover rounded-[1.5rem]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXRTz3gfy-Dji66AYGwyGrRaiOC0viRQOvMyRT7MbszTuPb_kXslzK1EPSYqQD7ykXIfmuxi0D_e6m3sOFLcrns9_eGwuyyj8bCp1SICgqip8eNkmCj-AM9l2f7vYWpHBun3s3b0fj-oxUUhJYP4OFIiqjFwVogLsCLRjljNdILkiO478r-GhkwIn0vL7hSNY7i5V3m514GhuZQZGDPmWyQYzQ0NqAnO-36FG5YqNrh8dskLuRTXkKeW_xaoHxWly5yDdmnvpEhTQ" alt="Derivatives Trading" referrerPolicy="no-referrer" />
-          </div>
-        </div>
-      </div>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+  };
 
-      <section className="py-16 md:py-24 px-6 md:px-8 bg-surface-container-low mt-16 md:mt-24 -mx-6 md:-mx-8">
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.6 } }
+  };
+
+  return (
+    <main className="pt-32 pb-20 overflow-hidden font-sans">
+      {/* Hero Section */}
+      <section className="px-6 md:px-8 max-w-7xl mx-auto mb-20 md:mb-32">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <motion.div 
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-8"
+          >
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 border border-orange-100">
+              <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-orange-600">High Leverage Trading</span>
+            </div>
+            <h1 className="text-5xl md:text-7xl font-extrabold text-[#001f66] leading-[1.05] tracking-tight">
+              Futures & <br /> <span className="text-slate-400">Options Desk.</span>
+            </h1>
+            <p className="text-lg text-slate-500 leading-relaxed max-w-lg">
+              Master market volatility with sophisticated F&O strategies. Hedge your risks or capitalize on directional moves with our low-latency trading engine.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Link to="/demat" className="bg-[#001f66] text-white px-8 py-4 rounded-xl font-bold shadow-xl shadow-blue-900/20 hover:scale-105 transition-transform flex items-center gap-2">
+                Activate F&O <ArrowRight size={18} />
+              </Link>
+              <Link to="/contact" className="border border-slate-200 text-[#001f66] px-8 py-4 rounded-xl font-bold hover:bg-slate-50 transition-colors">Strategy Consultation</Link>
+            </div>
+          </motion.div>
+          <motion.div 
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="relative"
+          >
+            <div className="aspect-square rounded-[3rem] overflow-hidden shadow-2xl border border-slate-100">
+              <img src={derivativesHero} alt="Derivatives Trading" className="w-full h-full object-cover" />
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Strategy Grid */}
+      <section className="bg-slate-50 py-24 px-6 md:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            <div className="bg-surface-container-lowest p-8 md:p-10 rounded-[2rem] shadow-sm text-center md:text-left">
-              <span className="material-symbols-outlined text-primary text-3xl md:text-4xl mb-6">analytics</span>
-              <h3 className="text-lg md:text-xl font-bold text-primary mb-4">Futures Trading</h3>
-              <p className="text-on-surface-variant text-sm md:text-base">Lock in future prices and manage portfolio exposure with institutional-grade liquidity.</p>
-            </div>
-            <div className="bg-surface-container-lowest p-8 md:p-10 rounded-[2rem] shadow-sm text-center md:text-left">
-              <span className="material-symbols-outlined text-primary text-3xl md:text-4xl mb-6">layers</span>
-              <h3 className="text-lg md:text-xl font-bold text-primary mb-4">Options Desk</h3>
-              <p className="text-on-surface-variant text-sm md:text-base">Sophisticated call and put strategies for income generation and downside protection.</p>
-            </div>
-            <div className="bg-surface-container-lowest p-8 md:p-10 rounded-[2rem] shadow-sm text-center md:text-left">
-              <span className="material-symbols-outlined text-primary text-3xl md:text-4xl mb-6">speed</span>
-              <h3 className="text-lg md:text-xl font-bold text-primary mb-4">Real-time Greeks</h3>
-              <p className="text-on-surface-variant text-sm md:text-base">Monitor Delta, Gamma, Theta, and Vega in real-time for precise position management.</p>
-            </div>
-          </div>
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          >
+            {[
+              { title: "Futures Trading", desc: "Institutional-grade liquidity for index and stock futures with competitive margins.", icon: <Activity size={24} /> },
+              { title: "Options Strategies", desc: "Build spreads, straddles, and condors with our advanced multi-leg order system.", icon: <Layers size={24} /> },
+              { title: "Risk Management", desc: "Automated stop-loss and trailing profit-taking tools to protect your capital.", icon: <Shield size={24} /> },
+              { title: "Advanced Greeks", desc: "Real-time Delta, Gamma, Theta, and Vega tracking for every strike price.", icon: <Target size={24} /> },
+              { title: "Low Latency", desc: "Millisecond execution speed ensuring you get the best possible entry and exit.", icon: <Zap size={24} /> },
+              { title: "Market Hedging", desc: "Protect your long-term portfolio from market downturns using index options.", icon: <TrendingDown size={24} /> }
+            ].map((strategy, i) => (
+              <motion.div 
+                key={i} 
+                variants={itemVariants}
+                className="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all group"
+              >
+                <div className="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center text-orange-600 mb-6 group-hover:bg-orange-600 group-hover:text-white transition-colors duration-500">
+                  {strategy.icon}
+                </div>
+                <h3 className="text-xl font-bold text-[#001f66] mb-3">{strategy.title}</h3>
+                <p className="text-slate-500 text-sm leading-relaxed opacity-80">{strategy.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
     </main>

@@ -1,6 +1,30 @@
+import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
+import image1 from '../images/image1.png';
 
 export default function About() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        ease: [0.16, 1, 0.3, 1]
+      }
+    }
+  };
+
   return (
     <main className="pt-32">
       {/* Hero Section */}
@@ -13,12 +37,12 @@ export default function About() {
               At VS INVESTIFY, we don't just manage assets; we construct legacies. Our philosophy is rooted in the meticulous balance of risk mitigation and aggressive growth, ensuring your financial fortress stands resilient through generations.
             </p>
             <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
-              <Link className="bg-gradient-to-br from-primary to-primary-container text-white px-8 py-4 rounded-xl font-bold text-base hover:scale-[1.02] active:scale-95 shadow-[0_20px_40px_rgba(0,31,102,0.15)] transition-all" to="/contact">Schedule Consultation</Link>
+              <Link className="bg-gradient-to-br from-primary to-primary-container text-white px-8 py-4 rounded-xl font-bold text-base hover:scale-[1.02] active:scale-95 shadow-[0_20px_40_rgba(0,31,102,0.15)] transition-all" to="/contact">Schedule Consultation</Link>
             </div>
           </div>
           <div className="relative">
             <div className="aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl max-w-md mx-auto lg:max-w-none">
-              <img className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDm_feEPGeVGOiw17ctYjEdhlM0IBnF05Y30z2TXSuztkc1MilcRfiGwRormCcHVQ4E74BRvYynzIhaA_iobuDmWDl9IevlnTTdYxHbiQ0AKlc1ZKo3UA-DtesyWXINXxs2Q46yDqbWo9c66FDZvn5pCRsFjY72LdE2b5jXnhzsMMhqL43Hnn-mZC7qwJvPg1yJake2-GXhUnKrgZiBr0xFtAYC5_8rChqyRlTook3IHuGpSYLYRREUQQQ5qKXiLcTsFIXqu7UkbI0" alt="Office" referrerPolicy="no-referrer" />
+              <img className="w-full h-full object-cover" src={image1} alt="Office" />
             </div>
             <div className="absolute -bottom-8 -left-8 bg-white p-8 rounded-3xl shadow-xl max-w-xs hidden lg:block border border-surface-container-high">
               <p className="text-sm italic text-on-surface-variant leading-relaxed">"True wealth is not measured by the capital you possess, but by the freedom and security it buys for your future."</p>
@@ -93,29 +117,40 @@ export default function About() {
         </div>
       </section>
 
-      {/* Advisory Council */}
-      <section className="px-8 max-w-7xl mx-auto mb-32">
-        <div className="mb-16">
-          <h2 className="text-4xl font-extrabold text-primary mb-4">Elite Advisory Council</h2>
-          <div className="w-20 h-1.5 bg-primary rounded-full"></div>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {/* Wealth Ecosystem Section */}
+      <section className="px-8 max-w-7xl mx-auto mb-32 overflow-hidden">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={containerVariants}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+        >
+          <div className="md:col-span-2 lg:col-span-4 mb-8">
+            <motion.h2 variants={itemVariants} className="text-4xl font-extrabold text-primary mb-4 leading-tight">The Wealth Ecosystem</motion.h2>
+            <motion.div variants={itemVariants} className="w-20 h-1.5 bg-primary rounded-full"></motion.div>
+          </div>
+          
           {[
-            { name: "Vikram Singh", role: "Chief Investment Officer", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAVJJYuLpbQRVFbrJc9kgY5Phc6AiHdFk6JUFkBQZaV5tE99kSnQOf5WxZ1w2yg7Hw90rrjqhfNbmNcLY-8Epq5kiB0hKwJF4ga-6Tp8eAQZhBI_1Ue6ECSlArudctukkCKS8c6CvvrPqtBM0fhMOoNQfk_9biEjqVTrvqje1uMUuP4pjqeNLd3QGQM4l1Di93rE5SEt0gk38ScMQapJzonLQI7RsZc1hhitmjyx6vxdZqlMM57l2mpgJ96Jvo03i6ghd_UToYVi6w" },
-            { name: "Ananya Sharma", role: "Head of Equity Research", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuC-iuS8y970FVYO9_45Au6rKaJvGLuEnWl653zSsoljototTb4gFHgNdk7EUYR6fstwXQrE2clvtaKK50x6stmM0pDxm_LGB87VFjG1WskI73e_ahv9Kn5LD_Oy1lgjmhLAdqOMRSjm0Xr1x1W5eNoUlrdCgQv3P5dRrRs6N-Fqr6SSu2baA5bhZTPSnJiRwIx5mQFXnXy_8Jw0cVwV0GEaWF-uBDqLEnaio-au2TEw0i7gWNmtWvbWIsCV2pvF2TjPaXhCXhcNHJ4" },
-            { name: "David Chen", role: "Strategic Global Markets", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB2OYv6XLRFEp2i3EzyDAuw1u5vbSv474uWItRFW3XUnkGm7FuXw7YnpXqMjnI6dxSHyhEg_Pq2feQBLcTj1NiTdrDPWiKaqJawgAt_klJ4pQr79y__aOmh779F_8VkCNqH8fxJqcd_myirVTCOAFYdcALsEt2mfkrvh7XE0os9yl1sJlFS_NdDpMdhLFu4agU68-WFabnhM2LrHaNwwMBI7RicSn-MRO3OtdAgJRRGotsJp-BE1q2spCDngRIIeE5Il9R2Ay8VdWY" },
-            { name: "Priya Verma", role: "Director of Client Relations", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCXM4z_W7Jj51e-J_E79jAFyS4wxphSWXiFa39mvQ6rSg6owb_yTa3Sxcu38ukgFAVop3r8ynFcv2ig44iuJ2SkIzXMAvMo2j2TQRWgr_JodGgA2pFUjEcaXZULX-3cpUHChOz37y3arhwZ_niESIAyz9DeNWewom2WuwDpQ4HKSs2fFhG6turvPeFwDehcYa4RI4AF_E-7iiLo6QxI0hjMTk4yswBp6j9gF4C_y61KNSqeqLjcVEhS56eFOuj20C2Cjxx4CgQyPhU" }
-          ].map((member, i) => (
-            <div key={i} className="group">
-              <div className="aspect-[3/4] rounded-2xl overflow-hidden mb-6 relative">
-                <img className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" src={member.img} alt={member.name} referrerPolicy="no-referrer" />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            { title: "Strategic Advisory", desc: "Institutional-grade strategies tailored for individual growth targets.", icon: "account_balance" },
+            { title: "Global Insights", desc: "Real-time analysis of international markets to identify alpha opportunities.", icon: "language" },
+            { title: "Risk Mitigation", desc: "Sophisticated hedging techniques to preserve capital in volatile markets.", icon: "security" },
+            { title: "Legacy Planning", desc: "Structured blueprints for multi-generational wealth preservation.", icon: "history_edu" }
+          ].map((item, i) => (
+            <motion.div 
+              key={i} 
+              variants={itemVariants}
+              whileHover={{ y: -10 }}
+              className="bg-surface-container-low p-8 rounded-[2rem] border border-outline-variant/10 hover:shadow-2xl hover:bg-white transition-all duration-500 group"
+            >
+              <div className="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-500">
+                <span className="material-symbols-outlined text-3xl">{item.icon}</span>
               </div>
-              <h4 className="text-xl font-bold text-primary">{member.name}</h4>
-              <p className="text-xs font-bold uppercase text-on-surface-variant tracking-wider">{member.role}</p>
-            </div>
+              <h4 className="text-xl font-bold text-primary mb-3">{item.title}</h4>
+              <p className="text-sm text-on-surface-variant leading-relaxed opacity-80">{item.desc}</p>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* Closing CTA */}
