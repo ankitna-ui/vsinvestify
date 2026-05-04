@@ -157,11 +157,17 @@ export default function Demat() {
                       <span className="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm font-medium">+91</span>
                       <input 
                         className="w-full bg-surface-container-low border-none rounded-xl py-4 pl-14 pr-4 focus:ring-2 focus:ring-primary/20 text-on-surface font-medium transition-all" 
-                        placeholder="98765 43210" 
+                        placeholder="9876543210" 
                         type="tel" 
                         required
+                        pattern="[0-9]{10}"
+                        maxLength={10}
+                        title="Please enter a valid 10-digit mobile number"
                         value={formData.mobile}
-                        onChange={(e) => setFormData({...formData, mobile: e.target.value})}
+                        onChange={(e) => {
+                          const val = e.target.value.replace(/[^0-9]/g, '');
+                          if (val.length <= 10) setFormData({...formData, mobile: val});
+                        }}
                       />
                     </div>
                   </div>
@@ -188,8 +194,14 @@ export default function Demat() {
                         placeholder="ABCDE1234F" 
                         type="text" 
                         required
+                        pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"
+                        maxLength={10}
+                        title="Please enter a valid PAN (5 Letters, 4 Digits, 1 Letter)"
                         value={formData.pan}
-                        onChange={(e) => setFormData({...formData, pan: e.target.value.toUpperCase()})}
+                        onChange={(e) => {
+                          const val = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+                          if (val.length <= 10) setFormData({...formData, pan: val});
+                        }}
                       />
                     </div>
                   </div>
@@ -199,8 +211,7 @@ export default function Demat() {
                       <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">calendar_today</span>
                       <input 
                         className="w-full bg-surface-container-low border-none rounded-xl py-4 pl-12 pr-4 focus:ring-2 focus:ring-primary/20 text-on-surface font-medium transition-all" 
-                        placeholder="DD / MM / YYYY" 
-                        type="text" 
+                        type="date" 
                         required
                         value={formData.dob}
                         onChange={(e) => setFormData({...formData, dob: e.target.value})}

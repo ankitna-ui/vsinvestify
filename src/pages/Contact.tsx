@@ -66,18 +66,27 @@ export default function Contact() {
                     type="text" 
                     required
                     value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    onChange={(e) => {
+                      const val = e.target.value.replace(/[^a-zA-Z\s]/g, '');
+                      setFormData({...formData, name: val});
+                    }}
                   />
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-wider text-slate-500 px-1">Phone Number</label>
                   <input 
                     className="w-full bg-surface-container-low border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 transition-all text-on-surface" 
-                    placeholder="+91 00000 00000" 
+                    placeholder="9876543210" 
                     type="tel" 
                     required
+                    pattern="[0-9]{10}"
+                    maxLength={10}
+                    title="Please enter a valid 10-digit mobile number"
                     value={formData.phone}
-                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                    onChange={(e) => {
+                      const val = e.target.value.replace(/[^0-9]/g, '');
+                      if (val.length <= 10) setFormData({...formData, phone: val});
+                    }}
                   />
                 </div>
               </div>
