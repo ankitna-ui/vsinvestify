@@ -212,7 +212,7 @@ export default function Equity() {
             <div className="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-100 flex flex-col justify-between">
               <div>
                 <span className="text-6xl font-black text-slate-100 block mb-6">02</span>
-                <h3 className="text-2xl font-bold text-[#001f66] mb-4">Risk != Volatility</h3>
+                <h3 className="text-2xl font-bold text-[#001f66] mb-4">Risk ≠ Volatility</h3>
                 <p className="text-slate-500 leading-relaxed mb-8">
                   Price swings are normal. Real risk is the permanent loss of capital. We focus on business strength to ensure volatility doesn't turn into risk.
                 </p>
