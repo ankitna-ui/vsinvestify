@@ -4,46 +4,13 @@ import { useState, useEffect } from 'react';
 import { TrendingUp, ShieldCheck, Rocket, Zap, PieChart, Globe, ArrowRight, Wallet, HelpCircle, Calendar, FileText, CheckCircle, TrendingDown } from 'lucide-react';
 
 export default function Unlisted() {
-  const [marketData, setMarketData] = useState([
-    { name: "NIFTY 50", symbol: "NIFTY", price: "22,419.55", change: "+0.45%", isUp: true, logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuMXDcrCy5Knmo5Zqo8-L269Gndp_Ntzzr5A&s" },
-    { name: "SENSEX", symbol: "SENSEX", price: "73,876.82", change: "+0.38%", isUp: true, logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/BSE_India_Logo.svg/1200px-BSE_India_Logo.svg.png" },
-    { name: "BANK NIFTY", symbol: "BANKNIFTY", price: "47,214.10", change: "-0.12%", isUp: false, logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuMXDcrCy5Knmo5Zqo8-L269Gndp_Ntzzr5A&s" },
-    { name: "RELIANCE", symbol: "RELIANCE", price: "2,984.50", change: "+2.15%", isUp: true, logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Reliance_Industries_Logo.svg/1200px-Reliance_Industries_Logo.svg.png" }
+  const [marketData] = useState([
+    { name: "HDB Financial", symbol: "HDBFS", price: "1,270", change: "+1.25%", isUp: true, logo: "https://theinvestopia.com/uploads/62bcb4905bca8.png" },
+    { name: "Chennai Super Kings", symbol: "CSK", price: "208", change: "+0.85%", isUp: true, logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7sXUh32iqRgTODGSqa1d7J5PKGC5GR0WODw&s" },
+    { name: "NSE India", symbol: "NSE", price: "2,430", change: "+2.10%", isUp: true, logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuMXDcrCy5Knmo5Zqo8-L269Gndp_Ntzzr5A&s" }
   ]);
-
-  // Fetch Live Market Data from Twelve Data API
-  useEffect(() => {
-    const fetchMarketData = async () => {
-      try {
-        const symbols = "NIFTY,SENSEX,BANKNIFTY,RELIANCE";
-        const response = await fetch(`https://api.twelvedata.com/quote?symbol=${symbols}&apikey=f67e9f3b5f3d4d4f8f3b5f3d4d4f8f3b`);
-        const data = await response.json();
-
-        if (data && !data.code) {
-          setMarketData(prev => prev.map(item => {
-            const live = data[item.symbol];
-            if (live) {
-              return {
-                ...item,
-                price: parseFloat(live.close).toLocaleString('en-IN', { maximumFractionDigits: 2 }),
-                change: `${parseFloat(live.percent_change) > 0 ? '+' : ''}${parseFloat(live.percent_change).toFixed(2)}%`,
-                isUp: parseFloat(live.percent_change) >= 0
-              };
-            }
-            return item;
-          }));
-        }
-      } catch (error) {
-        console.error("Market API Error:", error);
-      }
-    };
-
-    fetchMarketData();
-    const interval = setInterval(fetchMarketData, 60000);
-    return () => clearInterval(interval);
-  }, []);
   const deals = [
-    { name: "HDB Financial Services", sector: "Financial Services", price: "1270", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuSN71c8ALeWaCC_haacPsqwKwx5nfJQonHA&s", tag: "High Demand" },
+    { name: "HDB Financial Services", sector: "Financial Services", price: "1270", logo: "https://theinvestopia.com/uploads/62bcb4905bca8.png", tag: "High Demand" },
     { name: "Chennai Super Kings", sector: "IPL Team", price: "208", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7sXUh32iqRgTODGSqa1d7J5PKGC5GR0WODw&s", tag: "Trending" },
     { name: "Care Health Insurance", sector: "Insurance", price: "168", logo: "https://cdn.prod.website-files.com/6145f7156a1337613524d548/63f4a938bd530358e029988a_logo__care%20(1).png", tag: "Stable" },
     { name: "Sterlite Power", sector: "Power & Transmission", price: "591", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxdmaKsVDlE2SIHp8dw-nBaO_puT-Qk74COA&s", tag: "High Yield" },
@@ -52,11 +19,11 @@ export default function Unlisted() {
     { name: "HDFC Securities", sector: "Broking Service", price: "11200", logo: "https://www.hdfcsec.com/hsl.images/HSL_20_For%20White%20Background_PNG-202105110913277691627.png", tag: "Institutional" },
     { name: "SBI Mutual Fund", sector: "Mutual Fund", price: "2760", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1XzfvsFYTGS38guY5Ot-itO9Esqt8HMWOfw&s", tag: "Bluechip" },
     { name: "Orbis Financials", sector: "Custodian", price: "-", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrgIHFN8UOrbtFLhA-Nmdf7SX7rrkScSuluw&s", tag: "Niche" },
-    { name: "Capgemini Technologies", sector: "Consulting Services", price: "12600", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Capgemini_2017_logo.svg/1280px-Capgemini_2017_logo.svg.png", tag: "Global Leader" },
-    { name: "Mohan Meakin", sector: "Beverages", price: "2285", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_KdnqkqBUq2Wks9x2O3voHucmaDgB9kLcMw&s", tag: "Vintage" },
+    { name: "Capgemini Technologies", sector: "Consulting Services", price: "12600", logo: "https://www.drupal.org/files/Capgemini_Logo_2COL_RGB.png", tag: "Global Leader" },
+    { name: "Mohan Meakin", sector: "Beverages", price: "2285", logo: "https://theinvestopia.com/uploads/62bcb4e19450e.png", tag: "Vintage" },
     { name: "Oravel Stays (OYO)", sector: "Hospitality", price: "46", logo: "https://img.etimg.com/thumb/width-1200,height-1200,imgsize-146835,resizemode-75,msid-79085329/tech/startups/oravel-stays-infuses-rs-634-5-crore-into-india-operations-of-oyo-through-allotment-of-new-shares.jpg", tag: "High Beta" },
-    { name: "Indofill Industries", sector: "Agrochemical", price: "1260", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHWgYUTb5DuBQJT3x3YUPRE8y0t9rN0-81Cg&s", tag: "Industrial" },
-    { name: "PPFAS", sector: "Mutual Fund", price: "-", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/PPFAS_Mutual_Fund_logo.svg/1280px-PPFAS_Mutual_Fund_logo.svg.png", tag: "Quality" },
+    { name: "Indofill Industries", sector: "Agrochemical", price: "1260", logo: "https://www.navyugchemicals.com/uploads/supplier/logo/indofil-industries-ltd-37.png", tag: "Industrial" },
+    { name: "PPFAS", sector: "Mutual Fund", price: "-", logo: "https://m.economictimes.com/thumb/height-450,width-600,imgsize-14148,msid-128702900/ppfas-launches-2-new-passive-gift-city-based-outbound-funds.jpg", tag: "Quality" },
     { name: "NSE", sector: "Stock Exchange", price: "2430", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuMXDcrCy5Knmo5Zqo8-L269Gndp_Ntzzr5A&s", tag: "Top Pick" },
     { name: "NSDL", sector: "Depository", price: "1250", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8b3Ev-FuunFkiOFLu_5SYMwW5P94l4w-DAw&s", tag: "Essential" }
   ];
